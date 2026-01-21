@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navigation.css';
 import logo from '../assets/head_logo.png';
 
 function Navigation() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    setIsOpen(false); // Close menu after clicking
   };
 
   return (
@@ -17,7 +24,12 @@ function Navigation() {
           <img src={logo} alt="Chetan V. Logo" className="nav-logo" />
           <span>Chetan V.</span>
         </div>
-        <ul className="nav-links">
+        <div className={`menu-toggle ${isOpen ? 'active' : ''}`} onClick={toggleMenu}>
+          <span className="bar"></span>
+          <span className="bar"></span>
+          <span className="bar"></span>
+        </div>
+        <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
           <li>
             <a onClick={() => scrollToSection('about')}>About</a>
           </li>
