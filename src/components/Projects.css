@@ -36,6 +36,13 @@
     margin-top: var(--spacing-sm);
 }
 
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+}
+
 .project-link {
     display: inline-flex;
     align-items: center;
@@ -43,7 +50,6 @@
     font-size: var(--font-size-sm);
     font-weight: 600;
     color: var(--color-accent);
-    margin-top: var(--spacing-sm);
     transition: all var(--transition-fast);
 }
 

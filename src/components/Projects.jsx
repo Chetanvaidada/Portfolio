@@ -16,20 +16,21 @@ function Projects() {
         },
         {
             id: 2,
+            title: 'Globalgrad',
+            description: 'Voice based AI agent for study-abroad guidance with cookie-based JWT auth (email/password + Google login) and multi-step onboarding persisted via FastAPI. Implemented university discovery + shortlist/lock flows and integrated LiveKit tokens with in-room transcription/events.',
+            tags: ['FastAPI', 'React', 'PostgreSQL', 'Google OAuth', 'LiveKit'],
+            link: 'https://github.com/Chetanvaidada/Globalgrad',
+            demo: 'https://globalgrad.vercel.app',
+            gradient: 'linear-gradient(135deg, #4FACFE 0%, #00F2FE 100%)'
+        },
+        {
+            id: 3,
             title: 'Multi user code editor',
             description: 'Real-time collaborative code editor using WebSockets for live synchronization. Features debounced persistence and conflict-free concurrent editing.',
             tags: ['React', 'FastAPI', 'WebSockets', 'TypeScript'],
             link: 'https://github.com/Chetanvaidada/multi-user-code-editor', // Add your GitHub link here
             gradient: 'linear-gradient(135deg, #F093FB 0%, #F5576C 100%)'
         },
-        {
-            id: 3,
-            title: 'GenNFT',
-            description: 'Image generation system using diffusion models and Clip algorithm. Includes smart contracts for minting and trading on the blockchain.',
-            tags: ['Python', 'Flask', 'Solidity', 'React'],
-            link: 'https://github.com/Chetanvaidada/GeNFT-new', // Add your GitHub link here
-            gradient: 'linear-gradient(135deg, #4FACFE 0%, #00F2FE 100%)'
-        }
     ];
 
     return (
@@ -53,9 +54,16 @@ function Projects() {
                                     <span key={tagIndex} className="badge">{tag}</span>
                                 ))}
                             </div>
-                            <a href={project.link} className="project-link">
-                                View Project/Repo →
-                            </a>
+                            <div className="project-links">
+                                <a href={project.link} className="project-link" target="_blank" rel="noreferrer">
+                                    GitHub
+                                </a>
+                                {project.demo && (
+                                    <a href={project.demo} className="project-link" target="_blank" rel="noreferrer">
+                                        Live Demo
+                                    </a>
+                                )}
+                            </div>
                         </div>
                     ))}
                 </div>
