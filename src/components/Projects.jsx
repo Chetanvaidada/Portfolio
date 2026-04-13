@@ -31,6 +31,15 @@ function Projects() {
             link: 'https://github.com/Chetanvaidada/multi-user-code-editor', // Add your GitHub link here
             gradient: 'linear-gradient(135deg, #F093FB 0%, #F5576C 100%)'
         },
+        {
+            id: 4,
+            title: 'Adblend',
+            description: 'AI-powered Landing Page Personalization Engine that dynamically analyzes and customizes web pages based on user-provided ad content. Uses Playwright for hybrid scraping, extracts semantic elements via LLMs, and overlays real-time, context-aware personalized modifications through a React-based frontend.',
+            tags: ['React', 'FastAPI', 'Playwright', 'LLM'],
+            link: 'https://github.com/Chetanvaidada/AdBlend-', // github link will be added by user
+            demo: 'https://ad-blend.vercel.app/', // deployed link will be added by user
+            gradient: 'linear-gradient(135deg, #43E97B 0%, #38F9D7 100%)'
+        },
     ];
 
     return (
