@@ -16,16 +16,18 @@
     transform: translateY(-5px);
 }
 
-.cert-icon {
-    width: 48px;
-    height: 48px;
+.cert-badge {
+    width: 120px;
+    height: 120px;
     margin: 0 auto var(--spacing-md);
-    color: var(--color-primary);
+    border-radius: 50%;
+    overflow: hidden;
 }
 
-.cert-icon svg {
+.cert-badge img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
 }
 
 .cert-title {
@@ -52,3 +54,4 @@
 .cert-link:hover {
     opacity: 0.8;
 }
+

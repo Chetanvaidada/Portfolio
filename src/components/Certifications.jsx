@@ -1,6 +1,7 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Certifications.css';
+import claudeBadge from '../assets/claude_cert_badge.png';
 
 function Certifications() {
     const [ref, isVisible] = useScrollReveal(0.2);
@@ -10,7 +11,8 @@ function Certifications() {
             id: 1,
             title: 'Claude Certified Architect — Foundations (CCA-F)',
             issuer: 'Anthropic',
-            link: 'https://www.credly.com/badges/73392622-18b7-4654-9896-8297f03cc4bd/public_url'
+            link: 'https://www.credly.com/badges/73392622-18b7-4654-9896-8297f03cc4bd/public_url',
+            badge: claudeBadge
         }
     ];
 
@@ -27,11 +29,8 @@ function Certifications() {
                             className="certification-card card"
                             style={{ transitionDelay: `${index * 0.15}s` }}
                         >
-                            <div className="cert-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                    <circle cx="12" cy="8" r="7"></circle>
-                                    <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
-                                </svg>
+                            <div className="cert-badge">
+                                <img src={cert.badge} alt={`${cert.title} badge`} />
                             </div>
                             <h3 className="cert-title">{cert.title}</h3>
                             <p className="cert-issuer">{cert.issuer}</p>
@@ -49,3 +48,4 @@ function Certifications() {
 }
 
 export default Certifications;
+
