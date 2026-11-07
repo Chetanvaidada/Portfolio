@@ -18,8 +18,9 @@ function Hero() {
                         Hi, I'm <span className="highlight">Chetan Vaidada</span>
                     </h1>
                     <p className="hero-description">
-                        Motivated software developer building projects using Generative AI
-                        and expanding expertise in cloud platforms, CI/CD, and full-stack development.
+                        Full-stack software developer specializing in AI platform engineering: LLM gateways,
+                        MCP servers, LLM-as-judge pipelines, and spend analytics — built with TypeScript, React,
+                        PostgreSQL, and Azure. Claude Certified Architect (CCA-F).
                     </p>
                     <div className="hero-actions">
                         <button className="btn btn-primary" onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>

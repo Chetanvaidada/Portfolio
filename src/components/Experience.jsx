@@ -1,8 +1,10 @@
 import React from 'react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 import './Experience.css';
-import nomura from '../assets/Nomura-Logo.png';
+import synapx from '../assets/synapx_logo.jpg';
+import computelib from '../assets/computelib_logo.jpg';
 import hashedIn from '../assets/HashedIn_logo.png';
+import nomura from '../assets/Nomura-Logo.png';
 
 function Experience() {
     const [ref, isVisible] = useScrollReveal(0.2);
@@ -10,23 +12,39 @@ function Experience() {
     const experiences = [
         {
             id: 1,
-            role: 'Intern',
-            company: 'HashedIn by Deloitte',
-            duration: 'October 2025 - November 2025',
-            description: 'Constructed AI-powered research agent using Python, GenAI, LangChain, LangGraph, and MCP-based tools to make a custom chatbot. Using OpenAI embedding leveraged the use of RAG, stored the data in a Vector database, increasing the chatbot performance by 50%.',
-            skills: ['FastAPI', 'GenAI', 'Langchain', 'Langgraph', 'MCP', 'RAG'],
-            // Add your company logo path here
-            logo: hashedIn// Replace with: '/hashedin-logo.png'
+            role: 'Software Developer',
+            company: 'Synapx',
+            duration: 'July 2026 - Present',
+            description: 'Developed AIMS, a multi-tenant AI governance platform managing $10k+ monthly API spend via short-lived, model-scoped LiteLLM gateway keys; merged 400+ commits across the API and VS Code extension. Engineered MCP server OAuth 2.1 with session inventory to securely attribute Claude Code and Copilot activity for 50+ internal developers. Architected LLM-as-judge features: a Standards Reviewer automating 75% of pull-request check-runs and a project qualifier scoring 100+ new AI project requests monthly.',
+            skills: ['TypeScript', 'Fastify', 'React', 'PostgreSQL', 'LiteLLM', 'Azure AKS', 'MCP', 'OAuth 2.1'],
+            logo: synapx
         },
         {
             id: 2,
+            role: 'Software Developer (Part-time)',
+            company: 'Computelib',
+            duration: 'May 2026 - July 2026',
+            description: 'Built Reviewgenie AI, a Shopify app that processes 5,000+ monthly reviews through n8n, scores revenue at risk with Claude, and speeds up helpdesk ticket resolution by 40%.',
+            skills: ['React', 'FastAPI', 'Shopify', 'n8n', 'GraphQL', 'Claude API'],
+            logo: computelib
+        },
+        {
+            id: 3,
+            role: 'Intern',
+            company: 'HashedIn by Deloitte',
+            duration: 'October 2025 - November 2025',
+            description: 'Designed an AI research chatbot with LangChain and MCP tools that queries a vector database of 10,000+ OpenAI embeddings via RAG, improving response accuracy by 50%.',
+            skills: ['FastAPI', 'LangChain', 'LangGraph', 'MCP', 'RAG'],
+            logo: hashedIn
+        },
+        {
+            id: 4,
             role: 'Intern',
             company: 'Nomura Holdings',
             duration: 'June 2024 - December 2024',
-            description: 'Expanded automated E2E test suites using Selenium, Cucumber, and Java, increasing test coverage upto 95%+ for onboarding workflows. Optimized automation scripts and removed redundant steps, reducing execution time by 80% and enhancing overall testing efficiency to 93%. Improved CI/CD test pipelines using TestNG, Jenkins, and GitLab, reducing manual testing by 50+ hours per month and improving bug resolution speed by 35%.',
-            skills: ['Selenium', 'Jenkins', 'Cucumber', 'TestNG', 'Java', 'GitLab', 'MSSQL', 'IntelliJ', 'JIRA', 'Confluence'],
-            // Add your company logo path here
-            logo: nomura // Replace with: '/nomura-logo.png'
+            description: 'Expanded Selenium and Cucumber end-to-end test suites to over 95% coverage and improved Jenkins and GitLab CI pipelines, cutting execution time by 80% and saving 50+ hours of manual testing per month.',
+            skills: ['Selenium', 'Cucumber', 'TestNG', 'Java', 'Jenkins', 'GitLab'],
+            logo: nomura
         }
     ];
 

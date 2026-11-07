@@ -13,7 +13,7 @@ function Education() {
             degree: 'B.Tech in Computer Science',
             institution: 'Indian Institute of Information Technology Pune',
             duration: '2021 - 2025',
-            gpa: 'CGPA: 7.7/10',
+            gpa: 'CGPA: 7.68/10',
             // Add your institution logo path here
             logo: iiitp // Replace with: '/university-logo.png'
         },

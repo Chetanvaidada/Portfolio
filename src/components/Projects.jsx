@@ -17,7 +17,7 @@ function Projects() {
         {
             id: 2,
             title: 'Globalgrad',
-            description: 'Voice based AI agent for study-abroad guidance with cookie-based JWT auth (email/password + Google login) and multi-step onboarding persisted via FastAPI. Implemented university discovery + shortlist/lock flows and integrated LiveKit tokens with in-room transcription/events.',
+            description: 'Created a full-stack study-abroad guidance platform for 1,000+ students, raising onboarding completion by 35% with cookie-based JWT authentication and Google OAuth. Integrated a real-time LiveKit voice AI counselor into university discovery flows, handling 500+ daily inquiries and reducing reliance on live counselors by 60%.',
             tags: ['FastAPI', 'React', 'PostgreSQL', 'Google OAuth', 'LiveKit'],
             link: 'https://github.com/Chetanvaidada/Globalgrad',
             demo: 'https://globalgrad.vercel.app',
@@ -25,10 +25,10 @@ function Projects() {
         },
         {
             id: 3,
-            title: 'Multi user code editor',
-            description: 'Real-time collaborative code editor using WebSockets for live synchronization. Features debounced persistence and conflict-free concurrent editing.',
-            tags: ['React', 'FastAPI', 'WebSockets', 'TypeScript'],
-            link: 'https://github.com/Chetanvaidada/multi-user-code-editor', // Add your GitHub link here
+            title: 'Multi-User Code Editor',
+            description: 'Implemented a real-time collaborative code editor for 50+ concurrent users, using WebSocket sync and debounced persistence to reach sub-50 ms latency for in-memory edits.',
+            tags: ['React', 'Redux', 'TypeScript', 'FastAPI', 'WebSockets', 'Monaco', 'PostgreSQL'],
+            link: 'https://github.com/Chetanvaidada/multi-user-code-editor',
             gradient: 'linear-gradient(135deg, #F093FB 0%, #F5576C 100%)'
         },
         {

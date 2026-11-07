@@ -7,8 +7,8 @@ function Skills() {
 
     const skillCategories = [
         {
-            title: 'Languages & Core',
-            skills: ['Java', 'Python', 'C++', 'JavaScript'],
+            title: 'Languages',
+            skills: ['TypeScript', 'JavaScript', 'Python', 'Java', 'C++', 'SQL'],
             icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <polyline points="16 18 22 12 16 6"></polyline>
@@ -17,35 +17,8 @@ function Skills() {
             )
         },
         {
-            title: 'Frameworks & Libraries',
-            skills: ['ReactJS', 'NodeJS', 'FastAPI', 'Spring Boot', 'Selenium', 'TestNG', 'Langchain'],
-            icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
-                </svg>
-            )
-        },
-        {
-            title: 'Databases & Cloud',
-            skills: ['MySQL', 'MongoDB', 'PostgreSQL', 'AWS'],
-            icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
-                </svg>
-            )
-        },
-        {
-            title: 'Developer Tools',
-            skills: ['Git', 'Docker', 'Podman', 'Kubernetes', 'Jenkins', 'Cucumber'],
-            icon: (
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
-                </svg>
-            )
-        },
-        {
-            title: 'AI & Modern Tech',
-            skills: ['GenAI', 'RAG', 'Machine Learning', 'DSA', 'OOPS'],
+            title: 'AI / LLM',
+            skills: ['LiteLLM', 'MCP', 'LangChain', 'LangGraph', 'RAG', 'LLM-as-Judge', 'Claude API', 'OpenAI API', 'n8n'],
             icon: (
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="11" width="18" height="10" rx="2"></rect>
@@ -53,6 +26,44 @@ function Skills() {
                     <path d="M12 7v4"></path>
                     <line x1="8" y1="16" x2="8" y2="16"></line>
                     <line x1="16" y1="16" x2="16" y2="16"></line>
+                </svg>
+            )
+        },
+        {
+            title: 'Frameworks',
+            skills: ['React', 'Node.js', 'Fastify', 'FastAPI', 'Spring Boot', 'Tailwind CSS'],
+            icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+            )
+        },
+        {
+            title: 'Cloud & DevOps',
+            skills: ['Azure (AKS, Front Door, APIM)', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'Jenkins', 'CI/CD'],
+            icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"></path>
+                </svg>
+            )
+        },
+        {
+            title: 'Databases',
+            skills: ['PostgreSQL', 'MySQL', 'MongoDB'],
+            icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                    <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                    <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+            )
+        },
+        {
+            title: 'Testing & Auth',
+            skills: ['Playwright', 'Selenium', 'Cucumber', 'TestNG', 'OAuth 2.1', 'Auth0'],
+            icon: (
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
                 </svg>
             )
         }

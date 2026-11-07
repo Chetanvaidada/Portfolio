@@ -18,14 +18,15 @@ function About() {
                     <div className="about-text">
                         <div className="about-accent"></div>
                         <p className="mb-md">
-                            I'm a motivated software developer with practical experience in full-stack web development,
-                            mobile app development, and QA automation. Currently building projects using Generative AI
-                            and expanding my expertise in modern technologies such as cloud platforms, CI/CD, and containerization.
+                            I'm a full-stack software developer specializing in AI platform engineering — building LLM gateways
+                            (LiteLLM), MCP servers, LLM-as-judge pipelines, and spend analytics with TypeScript, React,
+                            PostgreSQL, and Azure. I'm a Claude Certified Architect (CCA-F).
                         </p>
                         <p className="mb-md">
-                            With hands-on experience at HashedIn by Deloitte and Nomura Holdings, I've developed AI-powered
-                            solutions and optimized test automation workflows. I'm passionate about leveraging cutting-edge
-                            technologies to solve real-world problems and continuously learning new tools and frameworks.
+                            With professional experience at Synapx, Computelib, HashedIn by Deloitte, and Nomura Holdings,
+                            I've built multi-tenant AI governance platforms, Shopify AI apps, research chatbots, and automated
+                            end-to-end test suites. I'm passionate about leveraging cutting-edge AI technologies to solve
+                            real-world problems and continuously learning new tools and frameworks.
                         </p>
                         <p>
                             When I'm not coding, you'll find me playing games or cheering for my favorite football teams.
