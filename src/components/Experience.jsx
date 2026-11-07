@@ -87,7 +87,7 @@ function Experience() {
                                 </div>
                                 {exp.projectLink && (
                                     <a href={exp.projectLink} className="experience-project-link" target="_blank" rel="noreferrer">
-                                        View Project →
+                                        Learn more about AIMS →
                                     </a>
                                 )}
                             </div>
