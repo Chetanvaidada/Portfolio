@@ -18,15 +18,16 @@ function About() {
                     <div className="about-text">
                         <div className="about-accent"></div>
                         <p className="mb-md">
-                            I'm a full-stack software developer specializing in AI platform engineering — building LLM gateways
-                            (LiteLLM), MCP servers, LLM-as-judge pipelines, and spend analytics with TypeScript, React,
-                            PostgreSQL, and Azure. I'm a Claude Certified Architect (CCA-F).
+                            I'm a full-stack software developer with hands-on experience building AI-powered platforms,
+                            automating testing pipelines, and shipping modern web applications. I work across the stack
+                            with TypeScript, React, Python, PostgreSQL, and Azure — from LLM gateways and MCP servers
+                            to real-time collaborative tools and Shopify apps.
                         </p>
                         <p className="mb-md">
                             With professional experience at Synapx, Computelib, HashedIn by Deloitte, and Nomura Holdings,
-                            I've built multi-tenant AI governance platforms, Shopify AI apps, research chatbots, and automated
-                            end-to-end test suites. I'm passionate about leveraging cutting-edge AI technologies to solve
-                            real-world problems and continuously learning new tools and frameworks.
+                            I've shipped multi-tenant AI governance platforms, AI-driven Shopify apps, research chatbots,
+                            and robust end-to-end test suites. I hold the Claude Certified Architect (CCA-F) credential
+                            and I'm always exploring the latest in AI and cloud technologies.
                         </p>
                         <p>
                             When I'm not coding, you'll find me playing games or cheering for my favorite football teams.

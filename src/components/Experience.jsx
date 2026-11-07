@@ -17,7 +17,8 @@ function Experience() {
             duration: 'July 2026 - Present',
             description: 'Developed AIMS, a multi-tenant AI governance platform managing $10k+ monthly API spend via short-lived, model-scoped LiteLLM gateway keys; merged 400+ commits across the API and VS Code extension. Engineered MCP server OAuth 2.1 with session inventory to securely attribute Claude Code and Copilot activity for 50+ internal developers. Architected LLM-as-judge features: a Standards Reviewer automating 75% of pull-request check-runs and a project qualifier scoring 100+ new AI project requests monthly.',
             skills: ['TypeScript', 'Fastify', 'React', 'PostgreSQL', 'LiteLLM', 'Azure AKS', 'MCP', 'OAuth 2.1'],
-            logo: synapx
+            logo: synapx,
+            projectLink: 'https://aims.delivery/'
         },
         {
             id: 2,
@@ -84,6 +85,11 @@ function Experience() {
                                         <span key={skillIndex} className="badge">{skill}</span>
                                     ))}
                                 </div>
+                                {exp.projectLink && (
+                                    <a href={exp.projectLink} className="experience-project-link" target="_blank" rel="noreferrer">
+                                        View Project →
+                                    </a>
+                                )}
                             </div>
                         </div>
                     ))}

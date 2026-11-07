@@ -18,9 +18,9 @@ function Hero() {
                         Hi, I'm <span className="highlight">Chetan Vaidada</span>
                     </h1>
                     <p className="hero-description">
-                        Full-stack software developer specializing in AI platform engineering: LLM gateways,
-                        MCP servers, LLM-as-judge pipelines, and spend analytics — built with TypeScript, React,
-                        PostgreSQL, and Azure. Claude Certified Architect (CCA-F).
+                        Full-stack developer with experience across AI platforms, test automation,
+                        and modern web apps. I build with TypeScript, React, Python, and cloud — from
+                        LLM gateways to real-time collaborative tools. Claude Certified Architect (CCA-F).
                     </p>
                     <div className="hero-actions">
                         <button className="btn btn-primary" onClick={() => document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })}>
