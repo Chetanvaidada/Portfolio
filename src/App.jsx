@@ -1,38 +1,37 @@
-import React from 'react';
+import ScrollEffects from './components/ScrollEffects';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
-import About from './components/About';
-import Experience from './components/Experience';
-import Education from './components/Education';
+import Work from './components/Work';
 import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Certifications from './components/Certifications';
-import Achievements from './components/Achievements';
+import Stack from './components/Stack';
+import About from './components/About';
+import Credentials from './components/Credentials';
 import Contact from './components/Contact';
-import './App.css';
+import { profile } from './data/content';
 
 function App() {
-  return (
-    <>
-      <Navigation />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Education />
-        <Projects />
-        <Skills />
-        <Certifications />
-        <Achievements />
-        <Contact />
-      </main>
-      <footer className="footer">
-        <div className="container">
-          <p>&copy; 2026 Chetan Vaidada. Built with React.</p>
-        </div>
-      </footer>
-    </>
-  );
+    return (
+        <>
+            <a className="skip-link" href="#work">Skip to content</a>
+            <ScrollEffects />
+            <Navigation />
+            <main>
+                <Hero />
+                <Work />
+                <Projects />
+                <Stack />
+                <About />
+                <Credentials />
+                <Contact />
+            </main>
+            <footer className="footer">
+                <div className="container footer__inner">
+                    <p>© {new Date().getFullYear()} {profile.name}</p>
+                    <p className="mono">Built with React and Vite</p>
+                </div>
+            </footer>
+        </>
+    );
 }
 
 export default App;

@@ -1,0 +1,338 @@
+.trace {
+  --col-who: 17rem;
+  --col-meta: 6.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg-raise);
+  overflow: hidden;
+}
+
+.trace__axis,
+.span__row {
+  display: grid;
+  grid-template-columns: var(--col-who) minmax(0, 1fr) var(--col-meta);
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0 1.35rem;
+}
+
+.trace__axis {
+  height: 2.75rem;
+  color: var(--faint);
+  border-bottom: 1px solid var(--line);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.trace__axis .mono {
+  font-size: 0.6875rem;
+}
+
+.trace__years {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  height: 100%;
+}
+
+.trace__years span {
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  border-left: 1px solid var(--line);
+}
+
+.trace__axis-dur {
+  text-align: right;
+  padding-right: 1.9rem;
+}
+
+/* Span row ---------------------------------------------------------------- */
+.span + .span {
+  border-top: 1px solid var(--line);
+}
+
+.span__heading {
+  font: inherit;
+  letter-spacing: 0;
+}
+
+.span__row {
+  width: 100%;
+  min-height: 5rem;
+  background: transparent;
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.span__row:hover,
+.span.is-open .span__row {
+  background: color-mix(in srgb, var(--surface) 70%, transparent);
+}
+
+.span__row:focus-visible {
+  outline-offset: -3px;
+  border-radius: 6px;
+}
+
+.span__who {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.span__company,
+.span__role {
+  display: block;
+}
+
+.span__company {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-stretch: 88%;
+  font-size: 1.15rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.span__role {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* Track with year gridlines. */
+.span__track {
+  position: relative;
+  align-self: stretch;
+  background-image: linear-gradient(to right, var(--line) 1px, transparent 1px);
+  background-size: calc(100% / var(--years, 3)) 100%;
+}
+
+.span__bar {
+  position: absolute;
+  top: 50%;
+  height: 14px;
+  min-width: 10px;
+  margin-top: -7px;
+  border-radius: 4px;
+  background: var(--accent);
+  opacity: 0.55;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.9s var(--ease), opacity 0.2s ease;
+  transition-delay: calc(var(--i) * 110ms + 150ms), 0s;
+}
+
+.trace.is-visible .span__bar {
+  transform: scaleX(1);
+}
+
+.span__row:hover .span__bar,
+.span.is-open .span__bar {
+  opacity: 1;
+}
+
+/* The current role is still running: warm colour, open right edge. */
+.span__bar.is-live {
+  background: linear-gradient(to right, var(--warm) 70%, transparent);
+  opacity: 0.85;
+  border-radius: 4px 0 0 4px;
+}
+
+.span__bar.is-live::after {
+  content: '';
+  position: absolute;
+  right: -3px;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  margin-top: -4px;
+  border-radius: 50%;
+  background: var(--warm);
+  animation: live 1.8s ease-out infinite;
+}
+
+@keyframes live {
+  0% {
+    box-shadow: 0 0 0 0 var(--warm);
+  }
+  100% {
+    box-shadow: 0 0 0 10px transparent;
+  }
+}
+
+.span__meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  color: var(--muted);
+}
+
+.span__dur {
+  font-variant-numeric: tabular-nums;
+}
+
+.span__chev {
+  width: 1.1rem;
+  height: 1.1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform 0.3s var(--ease);
+}
+
+.span.is-open .span__chev {
+  transform: rotate(180deg);
+}
+
+/* Span detail ------------------------------------------------------------- */
+.span__panel {
+  border-top: 1px dashed var(--line);
+  animation: panel-in 0.4s var(--ease);
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+}
+
+.span__body {
+  display: grid;
+  gap: 2rem 3rem;
+  padding: 1.75rem 1.35rem 2rem;
+}
+
+@media (min-width: 900px) {
+  .span__body {
+    grid-template-columns: minmax(0, 1fr) 19rem;
+    padding-left: calc(1.35rem + 44px + 0.85rem);
+  }
+}
+
+.span__period {
+  color: var(--faint);
+}
+
+.span__headline {
+  margin: 0.35rem 0 1rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-stretch: 88%;
+  font-size: clamp(1.3rem, 2.4vw, 1.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  max-width: 28ch;
+}
+
+.span__points {
+  display: grid;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+  max-width: 62ch;
+  color: var(--muted);
+}
+
+.span__points li {
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+.span__points li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.72em;
+  width: 0.5rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.span__link {
+  margin-top: 1.4rem;
+}
+
+.attrs {
+  align-self: start;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  padding: 0.9rem 1rem 0.4rem;
+}
+
+.attrs__title {
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 0.4rem;
+}
+
+.attrs__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.55rem 0;
+  border-top: 1px solid var(--line);
+}
+
+.attrs__row dt {
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.attrs__row dd {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-stretch: 88%;
+  font-size: 1.15rem;
+  white-space: nowrap;
+  color: var(--warm);
+}
+
+/* Narrow screens: label and duration on one line, track underneath. ------- */
+@media (max-width: 820px) {
+  .trace__axis {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 0 1rem;
+  }
+
+  .trace__axis-label,
+  .trace__axis-dur {
+    display: none;
+  }
+
+  .span__row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      'who meta'
+      'track track';
+    gap: 0.75rem 1rem;
+    padding: 1rem 1rem 0.5rem;
+  }
+
+  .span__who {
+    grid-area: who;
+  }
+
+  .span__meta {
+    grid-area: meta;
+  }
+
+  .span__track {
+    grid-area: track;
+    height: 1.75rem;
+  }
+
+  .span__body {
+    padding: 1.4rem 1rem 1.6rem;
+  }
+}

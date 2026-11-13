@@ -1,118 +1,137 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import emailjs from '@emailjs/browser';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import { profile } from '../data/content';
+import Reveal from './Reveal';
 import './Contact.css';
 
+const SERVICE_ID = 'service_g6th0ym';
+const TEMPLATE_ID = 'template_tzyq935';
+const PUBLIC_KEY = '9782zfOCEIkgl8jJ0';
+
+const emptyForm = { name: '', email: '', message: '' };
+
 function Contact() {
-    const [ref, isVisible] = useScrollReveal(0.2);
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: ''
-    });
+    const [formData, setFormData] = useState(emptyForm);
+    const [status, setStatus] = useState('idle'); // idle | sending | sent | error
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setIsSubmitting(true);
-
-        // Actual EmailJS IDs
-        const SERVICE_ID = 'service_g6th0ym';
-        const TEMPLATE_ID = 'template_tzyq935';
-        const PUBLIC_KEY = '9782zfOCEIkgl8jJ0';
+        setStatus('sending');
 
         const templateParams = {
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-            title: 'Message from Portfolio', // Matches the {{title}} in your subject
+            ...formData,
+            title: 'Message from Portfolio', // Matches {{title}} in the EmailJS subject
         };
 
-        emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
-            .then((response) => {
-                console.log('SUCCESS!', response.status, response.text);
-                alert('Message sent successfully! I will get back to you soon.');
-                setFormData({ name: '', email: '', message: '' });
-            }, (err) => {
-                console.log('FAILED...', err);
-                alert('Failed to send the message. Please try again later or contact me directly via email.');
+        emailjs
+            .send(SERVICE_ID, TEMPLATE_ID, templateParams, PUBLIC_KEY)
+            .then(() => {
+                setFormData(emptyForm);
+                setStatus('sent');
             })
-            .finally(() => {
-                setIsSubmitting(false);
+            .catch((err) => {
+                console.error('EmailJS send failed', err);
+                setStatus('error');
             });
     };
 
-    const handleChange = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value
-        });
-    };
+    const channels = [
+        { label: 'Email', value: profile.email, href: `mailto:${profile.email}` },
+        { label: 'LinkedIn', value: 'chetan-vaidada', href: profile.linkedin, external: true },
+        { label: 'GitHub', value: 'Chetanvaidada', href: profile.github, external: true },
+        { label: 'Phone', value: profile.phone, href: profile.phoneHref },
+        { label: 'Resume', value: 'View or download the PDF', href: profile.resume, external: true },
+    ];
 
     return (
-        <section id="contact" className="section">
-            <div className="bg-decoration decoration-circle" style={{ top: '30%', right: '-100px' }}></div>
-
-            <div className="container">
-                <h2 className="section-title text-center mb-lg">Get In Touch</h2>
-
-                <div
-                    ref={ref}
-                    className={`contact-wrapper scroll-reveal ${isVisible ? 'revealed' : ''}`}
-                >
-                    <p className="contact-intro text-center mb-lg">
-                        Have a project in mind or want to collaborate? I'd love to hear from you!
-                        Send a direct message below.
+        <section id="contact" className="section contact">
+            <div className="contact__glow" aria-hidden="true"></div>
+            <div className="container contact__grid">
+                <Reveal>
+                    <p className="eyebrow">Contact</p>
+                    <h2 className="contact__title">Have something that needs building?</h2>
+                    <p className="contact__lede">
+                        A project, a role, or a question about anything on this page. Send a message here
+                        or use whichever channel you prefer.
                     </p>
 
-                    <div className="contact-form-container">
-                        <form className="contact-form" onSubmit={handleSubmit}>
-                            <div className="form-group">
-                                <label htmlFor="name">Name</label>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    required
-                                    placeholder="Your name"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="email">Email</label>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    required
-                                    placeholder="your.email@example.com"
-                                />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="message">Message</label>
-                                <textarea
-                                    id="message"
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleChange}
-                                    required
-                                    rows="5"
-                                    placeholder="Tell me about your project..."
-                                />
-                            </div>
-                            <button
-                                type="submit"
-                                className={`btn btn-primary submit-btn ${isSubmitting ? 'loading' : ''}`}
-                                disabled={isSubmitting}
-                            >
-                                {isSubmitting ? 'Sending...' : 'Send Message'}
+                    <ul className="channels">
+                        {channels.map((channel) => (
+                            <li key={channel.label}>
+                                <a
+                                    href={channel.href}
+                                    {...(channel.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                                >
+                                    <span className="mono channels__label">{channel.label}</span>
+                                    <span className="channels__value">{channel.value}</span>
+                                    <span className="channels__arrow" aria-hidden="true">↗</span>
+                                </a>
+                            </li>
+                        ))}
+                    </ul>
+                </Reveal>
+
+                <Reveal delay={100}>
+                    <form className="form" onSubmit={handleSubmit}>
+                        <div className="field">
+                            <label htmlFor="name">Name</label>
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                autoComplete="name"
+                                value={formData.name}
+                                onChange={handleChange}
+                                required
+                                placeholder="Your name"
+                            />
+                        </div>
+                        <div className="field">
+                            <label htmlFor="email">Email</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                autoComplete="email"
+                                value={formData.email}
+                                onChange={handleChange}
+                                required
+                                placeholder="you@example.com"
+                            />
+                        </div>
+                        <div className="field">
+                            <label htmlFor="message">Message</label>
+                            <textarea
+                                id="message"
+                                name="message"
+                                rows="5"
+                                value={formData.message}
+                                onChange={handleChange}
+                                required
+                                placeholder="What are you working on?"
+                            />
+                        </div>
+
+                        <div className="form__foot">
+                            <button type="submit" className="btn btn--primary" disabled={status === 'sending'}>
+                                {status === 'sending' ? 'Sending…' : 'Send message'}
                             </button>
-                        </form>
-                    </div>
-                </div>
+                            <p className={`form__status is-${status}`} role="status" aria-live="polite">
+                                {status === 'sent' && 'Message sent. I will get back to you soon.'}
+                                {status === 'error' && (
+                                    <>
+                                        That did not go through. Please try again, or email me at{' '}
+                                        <a href={`mailto:${profile.email}`}>{profile.email}</a>.
+                                    </>
+                                )}
+                            </p>
+                        </div>
+                    </form>
+                </Reveal>
             </div>
         </section>
     );
