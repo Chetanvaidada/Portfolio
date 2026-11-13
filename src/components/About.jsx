@@ -1,41 +1,33 @@
-import React from 'react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import Reveal from './Reveal';
 import './About.css';
 
 function About() {
-    const [ref, isVisible] = useScrollReveal(0.2);
-
     return (
         <section id="about" className="section">
-            <div className="bg-decoration decoration-circle" style={{ top: '20%', left: '-100px' }}></div>
+            <div className="container about">
+                <Reveal className="about__head">
+                    <p className="eyebrow">About</p>
+                    <h2>Full-stack by habit, curious about AI by choice.</h2>
+                </Reveal>
 
-            <div className="container">
-                <h2 className="section-title text-center mb-lg">About Me</h2>
-                <div
-                    ref={ref}
-                    className={`about-content scroll-reveal ${isVisible ? 'revealed' : ''}`}
-                >
-                    <div className="about-text">
-                        <div className="about-accent"></div>
-                        <p className="mb-md">
-                            I'm a full-stack software developer with hands-on experience building AI-powered platforms,
-                            automating testing pipelines, and shipping modern web applications. I work across the stack
-                            with TypeScript, React, Python, PostgreSQL, and Azure — from LLM gateways and MCP servers
-                            to real-time collaborative tools and Shopify apps.
-                        </p>
-                        <p className="mb-md">
-                            With professional experience at Synapx, Computelib, HashedIn by Deloitte, and Nomura Holdings,
-                            I've shipped multi-tenant AI governance platforms, AI-driven Shopify apps, research chatbots,
-                            and robust end-to-end test suites. I hold the Claude Certified Architect (CCA-F) credential
-                            and I'm always exploring the latest in AI and cloud technologies.
-                        </p>
-                        <p>
-                            When I'm not coding, you'll find me playing games or cheering for my favorite football teams.
-                            As an avid football fan, I love the strategic aspects of the game, which translates well into
-                            my approach to software development and problem-solving.
-                        </p>
-                    </div>
-                </div>
+                <Reveal className="about__text" delay={100}>
+                    <p>
+                        I started in test automation at Nomura, moved to RAG chatbots at HashedIn by Deloitte,
+                        shipped an AI-driven Shopify app at Computelib, and now build AI governance tooling at
+                        Synapx. The thread through all of it is the same: make a system people can trust, then
+                        prove it with numbers.
+                    </p>
+                    <p>
+                        I work across the stack with TypeScript, React, Python, PostgreSQL and Azure, from LLM
+                        gateways and MCP servers to real-time collaborative tools. I hold the Claude Certified
+                        Architect (CCA-F) credential and keep up with whatever is new in AI and cloud.
+                    </p>
+                    <p>
+                        Away from the keyboard I play games and follow football closely. I like the strategy
+                        of it, reading the shape of a match and deciding where to press, and that carries
+                        over into how I approach software.
+                    </p>
+                </Reveal>
             </div>
         </section>
     );

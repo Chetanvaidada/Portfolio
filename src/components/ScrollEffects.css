@@ -1,0 +1,107 @@
+/* Reading-progress line along the top edge. */
+.scroll-progress {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  height: 2px;
+  background: linear-gradient(to right, var(--accent), var(--warm));
+  transform: scaleX(var(--page-progress, 0));
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+/* Hero parallax: the copy drifts up and fades, the photo and its frame
+   separate slightly, and the glow slides, as the hero leaves the screen. */
+.hero__copy {
+  transform: translateY(calc(var(--hero-progress, 0) * -48px));
+  opacity: calc(1 - var(--hero-progress, 0) * 0.85);
+}
+
+.hero__photo img {
+  transform: translateY(calc(var(--hero-progress, 0) * 36px)) scale(calc(1 + var(--hero-progress, 0) * 0.04));
+}
+
+.hero__photo::before {
+  transform: translate(calc(var(--hero-progress, 0) * 14px), calc(var(--hero-progress, 0) * 70px));
+}
+
+.hero__glow {
+  transform: translateY(calc(var(--hero-progress, 0) * 120px));
+}
+
+/* Section headings wipe up from behind a mask; the lede follows. */
+.section__head.reveal {
+  opacity: 1;
+  transform: none;
+}
+
+.section__head.reveal h2 {
+  clip-path: inset(0 0 100% 0);
+  transform: translateY(0.45em);
+  transition: clip-path 0.9s var(--ease), transform 0.9s var(--ease);
+}
+
+.section__head.reveal p {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s var(--ease) 0.2s, transform 0.7s var(--ease) 0.2s;
+}
+
+.section__head.reveal.is-visible h2 {
+  clip-path: inset(-0.2em -0.2em -0.3em -0.2em);
+  transform: none;
+}
+
+.section__head.reveal.is-visible p {
+  opacity: 1;
+  transform: none;
+}
+
+/* Timeline rows arrive one after another. */
+.trace .span {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+
+.trace.is-visible .span {
+  opacity: 1;
+  transform: none;
+}
+
+/* Project titles slide in from the left as their row appears. */
+.project.reveal .project__title {
+  transform: translateX(-22px);
+  transition: transform 0.9s var(--ease);
+  transition-delay: inherit;
+}
+
+.project.reveal.is-visible .project__title {
+  transform: none;
+}
+
+/* Stack rows: the label fades, then each tool rises in turn. */
+.stack__row.reveal dd span {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s var(--ease), transform 0.5s var(--ease), color 0.2s ease;
+  transition-delay: calc(var(--n, 0) * 45ms + 120ms), calc(var(--n, 0) * 45ms + 120ms), 0s;
+}
+
+.stack__row.reveal.is-visible dd span {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section__head.reveal h2,
+  .section__head.reveal p,
+  .trace .span,
+  .project.reveal .project__title,
+  .stack__row.reveal dd span {
+    opacity: 1;
+    transform: none;
+    clip-path: none;
+  }
+}
